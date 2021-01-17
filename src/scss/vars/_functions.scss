@@ -1,0 +1,19 @@
+@function image-url($path) {
+  @return url('~@img/#{$path}');
+}
+
+@function ps($value) {
+  @return $value / $pc-width * 100 + vw;
+}
+
+@function ts($value) {
+  @return $value / $tablet-width * 100 + vw;
+}
+
+@function ss($value) {
+  @return $value / $sp-width * 100 + vw;
+}
+
+@function calc-size($value) {
+  @return calc(#{$value}/ 750 * 100vw);
+}

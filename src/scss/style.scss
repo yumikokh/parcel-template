@@ -1,0 +1,24 @@
+@import "../../node_modules/reset-css/sass/reset";
+@import "./vars/_index.scss";
+
+// Common
+html {
+  font-family: $font-family;
+  font-size: ss($font-size);
+  font-weight: normal;
+  color: $color-black;
+  background: $color-bg;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+a {
+  text-decoration: none;
+}

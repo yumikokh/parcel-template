@@ -1,0 +1,26 @@
+// Size
+$pc-width: 1000px;
+$tablet-width: 700px;
+$sp-width: 375px;
+
+// Font
+$font-size: 10px;
+$font-family: ヒラギノ角ゴ Pro W3, Hiragino Kaku Gothic Pro, メイリオ, Meiryo,
+  Osaka, MS Pゴシック, MS PGothic, sans-serif;
+
+/// 引き継ぎ
+
+// size
+$pc_min_width: 1400px;
+$sp_max_width: 375px;
+
+// color
+$color-black: #333;
+$color-black-2: #344148;
+$color-gray: #c4c4c4;
+$color-gold: #caa846;
+$color-bg: #fff8f8;
+$color-red: #b50100;
+
+// zindex
+$zindex: head, null, meter, modal, loading, celebrate;

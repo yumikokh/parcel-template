@@ -1,0 +1,80 @@
+block ConfigBlock
+  - site_name = 'parcel-template' // TODO
+  - title = title ? title : page_name ? [page_name, site_name].join(' | ') : site_name
+  - description = 'This is description.' // TODO
+  - url = 'http://example.com' // TODO
+  - favicon_url = url + '/favicon.ico'
+  - ogp_image_url = url + '/ogp.png'
+  - ogp_image_width = '1200'
+  - ogp_image_height = '630'
+
+doctype html
+html(lang="ja")
+  head
+    meta(charset="utf-8")
+    // meta
+    title= title
+    if description
+      meta(name="description", content=description)
+
+    if favicon_url
+      link(rel="shortcut icon", href=favicon_url, type="image/vnd.microsoft.icon")
+      link(rel="icon", href=favicon_url, type="image/vnd.microsoft.icon")
+
+    //- IEで「互換モード」で表示されるのを防ぐための指定
+    meta(http-equiv="X-UA-Compatible", content="IE=Edge")
+      
+    // smartphone meta
+    meta(name="viewport", content="width=device-width")
+    if webclipicon_url
+      meta(name="apple-mobile-web-app-capable", content='yes')
+      meta(name="apple-mobile-web-app-status-bar-style", content=ios_status_bar || 'default')
+      link(rel="apple-touch-icon", href=webclipicon_url)
+
+    // ogp
+    if url
+      meta(property="og:url", content=url)
+    if ogp_image_url
+      meta(property="og:image", content=ogp_image_url)
+    if ogp_image_width
+      meta(property="og:image:width", content=ogp_image_width)
+    if ogp_image_height
+      meta(property="og:image:height", content=ogp_image_height)
+    meta(property="og:type", content=ogp_type || "website")
+    meta(property="og:title", content=ogp_title || title)
+    meta(property="og:site_name", content=ogp_title)
+    meta(property="og:description", content=ogp_description || description)
+    meta(property="og:locale", content=ogp_locale || "ja_JP")
+
+    // twitter card
+    meta(property="twitter:card", content=(ogp_image_url ? 'summary_large_image' : 'summary'))
+    meta(property="twitter:title", content=ogp_title || title)
+    meta(property="twitter:description", content=ogp_description || description)
+    if ogp_image_url
+      meta(property="twitter:image", content=ogp_image_url)
+    if twitter_card_owner
+      meta(property="twitter:site", content=twitter_card_owner)
+      meta(property="twitter:creator", content=twitter_card_owner)
+
+    if url && !redirect_url
+      // canonical url
+      //- このページをはてぶ・シェアする際、使われるべきURLを明示する指定
+      //- wwwやhttps、getパラメータなど、微妙に違うURLでアクセスされても、使われるURLをひとつに絞れる
+      link(rel="canonical" href=url)
+
+    if redirect_url
+      meta(http-equiv="refresh" content=`0; URL=${redirect_url}`)
+
+    block metaBlock
+
+    // stylesheet
+    block StylesheetBlock
+      link(rel="stylesheet", href="scss/style.scss")
+
+  body
+    .wrapper
+      block ContentBlock
+
+    // javascript
+    block JavascriptBlock
+      script(src="ts/script.ts")
