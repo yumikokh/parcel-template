@@ -1,11 +1,7 @@
-import DeviceDetector from "device-detector-js";
-// See: https://www.npmjs.com/package/device-detector-js
+import p from "platform";
 
-const d = new DeviceDetector().parse(navigator.userAgent);
+export const isPc = p.product === null;
+export const isMobile = !!isPc;
 
-export const isPc = d.device.type === "desktop";
-export const isMobile = d.device.type === "smartphone";
-export const isTablet = d.device.type === "tablet";
-
-export const isAndroid = d.os.name === "Android";
-export const isIOs = d.os.name === "iOS";
+export const isAndroid = p.os.family === "Android";
+export const isIOs = p.os.family === "iOS";
