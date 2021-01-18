@@ -1,5 +1,6 @@
 {
   "modules": true,
+  "parser": "postcss-scss",
   "plugins": {
     "autoprefixer": {
       "grid": true
