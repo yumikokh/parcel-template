@@ -22,3 +22,8 @@ button {
 a {
   text-decoration: none;
 }
+
+.image {
+  background: red;
+  @include bg-flex("sample.jpg");
+}

@@ -1,7 +1,8 @@
 {
-  "modules": true,
   "parser": "postcss-scss",
   "plugins": {
+    "postcss-import": {},
+    'postcss-assets': { loadPaths: ['src/images/'] },
     "autoprefixer": {
       "grid": true
     }

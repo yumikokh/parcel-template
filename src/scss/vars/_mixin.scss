@@ -60,4 +60,36 @@
   }
 }
 
+@mixin bg-cover($path) {
+  background-image: image-url($path);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin bg-contain($path) {
+  background-image: image-url($path);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+@mixin flex-size($path, $ratio: 1) {
+  $width: pWidth($path, $ratio);
+  $height: pHeight($path, $ratio);
+  width: calc(#{$width}/ 750 * 100vw);
+  height: calc(#{$height}/ 750 * 100vw);
+}
+
+@mixin bg-solid($path, $ratio: 1) {
+  width: width($path, $ratio);
+  height: height($path, $ratio);
+  @include bg-contain($path);
+}
+
+@mixin bg-flex($path, $ratio: 1) {
+  @include flex-size($path, $ratio);
+  @include bg-contain($path);
+}
+
 // Custom
